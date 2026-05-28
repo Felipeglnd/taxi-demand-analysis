@@ -1,5 +1,3 @@
-SELECT OBJECT_ID('silver.taxi_trips');
-
 WITH base_data AS (
 
     SELECT
@@ -66,7 +64,7 @@ feature_engineering AS (
         passenger_count,
         trip_distance,
 
-        RatecodeID, -- Substituindo o NULL por Unknown
+        RatecodeID,
         COALESCE(store_and_fwd_flag, 'Unknown') AS store_and_fwd_flag, -- Substituindo o NULL por Unknown
 
         PULocationID,
@@ -221,4 +219,8 @@ INSERT INTO silver.taxi_trips (
 
 SELECT *
 FROM quality_flags
-WHERE trip_duration_min >= -1200 -- Excluindo outlier de duration_trip = -28248299 e ano de 1970
+WHERE trip_duration_min >= -1200; -- Excluindo outlier de duration_trip = -28248299 e ano de 1970
+
+
+
+SELECT TOP(10) * FROM silver.taxi_trips;

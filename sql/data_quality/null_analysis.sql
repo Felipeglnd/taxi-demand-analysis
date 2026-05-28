@@ -1,9 +1,4 @@
-SELECT TOP (20) * FROM raw.taxi_trips_raw;
-
--- Verificando quantidade de registros na base
-SELECT COUNT(*) from raw.taxi_trips_raw;
-
--- Verificando a quantidade de NULOS de cada coluna:
+-- 2. Verificando a quantidade de NULOS de cada coluna:
 DECLARE @sql NVARCHAR(MAX) = ''; -- Declarando Variável
 
 SELECT @sql += '
